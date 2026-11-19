@@ -1,0 +1,58 @@
+/* Intro ATARAXIE — dtf-shop.fr. Tout est préfixé atx- pour ne rien toucher au thème. */
+.atx-intro { --nuit: #05071c; --doux: rgba(233, 238, 255, .62); color: #e9eeff; font-family: Inter, system-ui, sans-serif; font-weight: 300; line-height: 1.4; }
+.atx-intro *, .atx-intro *::before, .atx-intro *::after { box-sizing: border-box; }
+.atx-intro img { max-width: none; }
+.atx-petit { font-size: 11px; letter-spacing: .34em; text-transform: uppercase; }
+  /* ---------- Intro : rebord, atx-papillon, dézoom ---------- */
+  .atx-intro { position: relative; height: 700vh; }
+  .atx-scene { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--nuit); }
+  .atx-flou { position: absolute; inset: -8%; background: url(assets/flou.jpg) center/cover; filter: blur(40px) brightness(.55) saturate(1.2); }
+  .atx-cadre { position: absolute; left: 50%; top: 47%; width: var(--c); height: var(--c); margin: calc(var(--c) / -2) 0 0 calc(var(--c) / -2); --c: min(66vh, 88vw, 720px); transform-origin: 49.3% 80.5%; will-change: transform; box-shadow: 0 40px 120px rgba(0, 0, 0, .55); }
+  .atx-cadre > img, .atx-cadre > canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  /* Halo de la planète et du logo */
+  .atx-halo { position: absolute; left: 50.3%; top: 44.5%; width: 44%; height: 44%; margin: -22% 0 0 -22%; border-radius: 50%; background: radial-gradient(circle, rgba(170, 190, 255, .34), rgba(255, 150, 220, .12) 45%, #0000 68%); mix-blend-mode: screen; animation: atx-pulse 7s ease-in-out infinite; pointer-events: none; }
+  .atx-logo { position: absolute; left: 50.3%; top: 91.6%; width: 12%; height: 5%; margin: -2.5% 0 0 -6%; border-radius: 50%; background: radial-gradient(ellipse, rgba(255, 90, 130, .7), #0000 70%); mix-blend-mode: screen; animation: atx-neon 5s linear infinite; pointer-events: none; }
+  .atx-dtf { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+  .atx-dtf img { position: absolute; left: 43%; top: 87.5%; width: 14%; height: 9%; }
+  @keyframes atx-pulse { 0%, 100% { opacity: .35; transform: scale(.96); } 50% { opacity: 1; transform: scale(1.05); } }
+  @keyframes atx-neon { 0%, 100% { opacity: .2; } 8% { opacity: .9; } 10% { opacity: .3; } 12% { opacity: .95; } 55% { opacity: .75; } 57% { opacity: .25; } 60% { opacity: .85; } }
+
+  /* Fumée de la cigarette */
+  .atx-fumee { position: absolute; left: 30.9%; top: 55.4%; width: 0; height: 0; pointer-events: none; }
+  .atx-fumee i { position: absolute; left: 0; top: 0; width: calc(var(--c) * .016); height: calc(var(--c) * .016); margin: calc(var(--c) * -.008); border-radius: 50%; background: rgba(225, 225, 255, .5); filter: blur(calc(var(--c) * .005)); opacity: 0; animation: atx-fumee 5.4s ease-out var(--r, 0s) infinite; }
+  @keyframes atx-fumee { 0% { opacity: 0; transform: translate(0, 0) scale(.3); } 12% { opacity: .75; } 100% { opacity: 0; transform: translate(calc(var(--c) * var(--dx, .02)), calc(var(--c) * -.085)) scale(3.2); } }
+
+  /* Papillon */
+  .atx-cadre > .atx-reflet { position: absolute; left: 44%; top: 74%; width: 11%; height: 17.5%; opacity: 0; }
+  .atx-lueur { position: absolute; left: 49.3%; top: 79.2%; width: 13%; height: 13%; margin: -6.5% 0 0 -6.5%; border-radius: 50%; background: radial-gradient(circle, rgba(120, 190, 255, .8), rgba(60, 110, 255, .25) 40%, #0000 70%); mix-blend-mode: screen; opacity: 0; pointer-events: none; }
+  .atx-papillon { position: absolute; left: 49.3%; top: 78.9%; width: 5%; margin: -2.65% 0 0 -2.5%; aspect-ratio: 600 / 637; perspective: calc(var(--c) * .4); will-change: transform; opacity: 0; filter: drop-shadow(0 0 calc(var(--c) * .006) rgba(120, 190, 255, .9)); }
+  .atx-papillon img { position: absolute; inset: 0; width: 100%; height: 100%; transform-origin: 52.8% 55%; animation: atx-aile-g .26s ease-in-out infinite alternate; }
+  .atx-papillon img + img { animation-name: atx-aile-d; }
+  .atx-papillon.pose img { animation-duration: 2.6s; animation-name: atx-aile-g-pose; }
+  .atx-papillon.pose img + img { animation-name: atx-aile-d-pose; }
+  @keyframes atx-aile-g { from { transform: rotateY(-8deg); } to { transform: rotateY(74deg); } }
+  @keyframes atx-aile-d { from { transform: rotateY(8deg); } to { transform: rotateY(-74deg); } }
+  @keyframes atx-aile-g-pose { 0%, 70% { transform: rotateY(0); } 85% { transform: rotateY(48deg); } 100% { transform: rotateY(0); } }
+  @keyframes atx-aile-d-pose { 0%, 70% { transform: rotateY(0); } 85% { transform: rotateY(-48deg); } 100% { transform: rotateY(0); } }
+
+  /* Titre d'ouverture */
+  .atx-titre { position: absolute; left: 50%; top: 40%; width: min(60vw, 680px); text-align: center; transform: translate(-50%, -50%); z-index: 3; pointer-events: none; will-change: transform, opacity; }
+  .atx-titre img { width: 100%; display: block; filter: drop-shadow(0 0 10px rgba(110, 210, 255, .95)) drop-shadow(0 0 34px rgba(60, 140, 255, .8)); animation: atx-titre 6s ease-in-out infinite; }
+  .atx-titre span { display: block; margin-top: -3.8%; margin-right: -.5em; letter-spacing: .5em; font-size: clamp(10px, 1.1vw, 14px); text-shadow: 0 0 12px rgba(110, 210, 255, .9), 0 1px 10px rgba(0, 0, 0, .6); }
+  @keyframes atx-titre { 0%, 100% { opacity: 1; } 47% { opacity: 1; } 48% { opacity: .72; } 49% { opacity: 1; } 52% { opacity: .8; } 53% { opacity: 1; } }
+
+  .atx-accroche { position: absolute; left: 0; right: 0; bottom: clamp(18px, 5vh, 46px); text-align: center; z-index: 3; }
+  .atx-accroche .atx-petit { display: block; text-shadow: 0 1px 12px rgba(0, 0, 0, .7); }
+  .atx-accroche .atx-petit + .atx-petit { margin-top: 10px; color: var(--doux); }
+  .atx-souris { width: 22px; height: 36px; border: 1px solid rgba(255,255,255,.55); border-radius: 12px; margin: 16px auto 0; position: relative; }
+  .atx-souris::after { content: ""; position: absolute; left: 50%; top: 7px; width: 2px; height: 7px; margin-left: -1px; background: #fff; border-radius: 2px; animation: atx-molette 1.8s infinite; }
+  @keyframes atx-molette { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(12px); opacity: 0; } 100% { opacity: 0; } }
+  .atx-fin { position: absolute; left: 0; right: 0; bottom: clamp(18px, 5vh, 46px); text-align: center; opacity: 0; z-index: 3; }
+  .atx-fin .atx-petit + .atx-petit { display: block; margin-top: 10px; color: var(--doux); }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .atx-intro { height: 100vh; }
+  .atx-intro *, .atx-intro *::before { animation: none !important; }
+}
